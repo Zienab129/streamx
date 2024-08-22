@@ -61,42 +61,35 @@
 
     <!-- Search Movies -->
     <section class="search">
-      <div class="container">
+      <div class="container-fluid">
         <div class="row searchW">
           <div class="col-lg-8 col-md-12 col-sm-12">
             <div id="alert"></div>
             <div class="col-md-12 col-sm-12">
               <form action="/search.html" class="search-form">
                 <!-- movies and shows radio box -->
-                <div class="row">
-                  <div class="col-md-12 col-sm-12">
-                    <div class="search-radio">
-                      <input
-                        type="radio"
-                        id="movie"
-                        name="type"
-                        value="movie"
-                        checked
-                      />
-                      <label for="movies">Movies</label>
-                      <input type="radio" id="tv" name="type" value="tv" />
-                      <label for="shows">TV Shows</label>
-                    </div>
-                  </div>
+                <div class="search-radio">
+                  <input
+                    type="radio"
+                    id="movie"
+                    name="type"
+                    value="movie"
+                    checked
+                  />
+                  <label for="movie">Movies</label>
+                  <input type="radio" id="tv" name="type" value="tv" />
+                  <label for="tv">TV Shows</label>
                 </div>
-
-                <div class="col-sm-12">
-                  <div class="search-flex">
-                    <input
-                      type="text"
-                      name="search-term"
-                      id="search-term"
-                      placeholder=" search "
-                    />
-                    <button class="btn" type="submit">
-                      <i class="fas fa-search"></i>
-                    </button>
-                  </div>
+                <div class="search-flex">
+                  <input
+                    type="text"
+                    name="search-term"
+                    id="search-term"
+                    placeholder=" search "
+                  />
+                  <button class="btn" type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
                 </div>
               </form>
             </div>

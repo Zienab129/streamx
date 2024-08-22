@@ -159,17 +159,25 @@ ul {
     font-size: 0.9rem !important;
   }
 }
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid .card-body .card-title {
+    font-size: 0.9rem !important;
+  }
+}
 
 /* Card */
 .card {
   background: #181c1f27;
   padding: 0px;
-  border-radius: 50px;
+  border-radius: 20px;
 }
 
 .card img {
   width: 100%;
-  border-radius: 50px;
+  border-radius: 20px;
 }
 .card:hover img {
   width: 100%;
@@ -339,12 +347,25 @@ section h2 {
 .search-radio label {
   margin-right: 10px;
 }
-
+.search-radio {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
 .search-flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 5px;
   margin-top: 10px;
+}
+.search-flex input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  max-width: calc(100% - 80px);
+  padding: 0.5rem;
 }
 
 .search-flex input {
@@ -368,7 +389,7 @@ section h2 {
 }
 
 .search .container form button {
-  flex: 0.5;
+  flex: 0.5 !important;
   display: block;
   width: 100%;
   padding: 10px;

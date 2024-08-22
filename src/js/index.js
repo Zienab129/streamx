@@ -1,22 +1,23 @@
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import '../css/style.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "bootstrap";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "../css/style.css";
 
-import { displayPopularMovies, displayMovieDetails } from './displayMovies.js';
-import { displayPopularShows, displayShowDetails } from './displayShows.js';
-import { search } from './search.js';
-import { displaySlider } from './slider.js';
-import { highlightActiveLink } from './utils.js';
+import { displayPopularMovies, displayMovieDetails } from "./displayMovies.js";
+import { displayPopularShows, displayShowDetails } from "./displayShows.js";
+import { search } from "./search.js";
+import { displaySlider } from "./slider.js";
+import { highlightActiveLink } from "./utils.js";
 
 window.global = {
   currentPage: window.location.pathname,
   search: {
-    term: '',
-    type: '',
+    term: "",
+    type: "",
     page: 1,
     totalPages: 1,
     totalResults: 0,
@@ -29,21 +30,21 @@ window.global = {
 
 function init() {
   switch (global.currentPage) {
-    case '/':
-    case '/index.html':
+    case "/":
+    case "/index.html":
       displaySlider();
       displayPopularMovies();
       break;
-    case '/shows.html':
+    case "/shows.html":
       displayPopularShows();
       break;
-    case '/movie-details.html':
+    case "/movie-details.html":
       displayMovieDetails();
       break;
-    case '/tv-details.html':
+    case "/tv-details.html":
       displayShowDetails();
       break;
-    case '/search.html':
+    case "/search.html":
       search();
       break;
   }
@@ -51,4 +52,4 @@ function init() {
   highlightActiveLink();
 }
 
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener("DOMContentLoaded", init);

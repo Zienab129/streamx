@@ -4,14 +4,14 @@ import {
   hideSpinner,
   addCommasToNumber,
   displayBackgroundImage,
-} from './utils.js';
+} from "./utils.js";
 
 export async function displayPopularMovies() {
-  const { results } = await fetchAPIData('movie/popular');
+  const { results } = await fetchAPIData("movie/popular");
 
   results.forEach((movie) => {
-    const div = document.createElement('div');
-    div.classList.add('card');
+    const div = document.createElement("div");
+    div.classList.add("card");
     div.innerHTML = `
           <a href="movie-details.html?id=${movie.id}">
             ${
@@ -30,25 +30,27 @@ export async function displayPopularMovies() {
           </a>
           <div class="card-body ">
             <h5 class="card-title">${movie.title}</h5>
-            <p class="card-text ">
-              <small class="text-light">Release: ${movie.release_date}</small>
+            <p class="card-text">
+              <small class="text-light ">Release: ${
+                movie.release_date
+              }</small>
             </p>
           </div>
         `;
 
-    document.querySelector('#popular-movies').appendChild(div);
+    document.querySelector("#popular-movies").appendChild(div);
   });
 }
 
 export async function displayMovieDetails() {
-  const movieId = window.location.search.split('=')[1];
+  const movieId = window.location.search.split("=")[1];
 
   const movie = await fetchAPIData(`movie/${movieId}`);
 
   // Overlay for background image
-  displayBackgroundImage('movie', movie.backdrop_path);
+  displayBackgroundImage("movie", movie.backdrop_path);
 
-  const div = document.createElement('div');
+  const div = document.createElement("div");
 
   div.innerHTML = `
   <div class="details-top">
@@ -79,7 +81,7 @@ export async function displayMovieDetails() {
     </p>
     <h5>Genres</h5>
     <ul class="list-group">
-      ${movie.genres.map((genre) => `<li>${genre.name}</li>`).join('')}
+      ${movie.genres.map((genre) => `<li>${genre.name}</li>`).join("")}
     </ul>
     <a href="${
       movie.homepage
@@ -104,10 +106,10 @@ export async function displayMovieDetails() {
   <div class="list-group">
     ${movie.production_companies
       .map((company) => `<span>${company.name}</span>`)
-      .join(', ')}
+      .join(", ")}
   </div>
 </div>
   `;
 
-  document.querySelector('#movie-details').appendChild(div);
+  document.querySelector("#movie-details").appendChild(div);
 }

@@ -1,11 +1,16 @@
-import { fetchAPIData, showSpinner, hideSpinner } from './utils.js';
+import {
+  fetchAPIData,
+  showSpinner,
+  displayBackgroundImage,
+  hideSpinner,
+} from "./utils.js";
 
 export async function displayPopularShows() {
-  const { results } = await fetchAPIData('tv/popular');
+  const { results } = await fetchAPIData("tv/popular");
 
   results.forEach((show) => {
-    const div = document.createElement('div');
-    div.classList.add('card');
+    const div = document.createElement("div");
+    div.classList.add("card");
     div.innerHTML = `
           <a href="tv-details.html?id=${show.id}">
             ${
@@ -30,19 +35,19 @@ export async function displayPopularShows() {
           </div>
         `;
 
-    document.querySelector('#popular-shows').appendChild(div);
+    document.querySelector("#popular-shows").appendChild(div);
   });
 }
 
 export async function displayShowDetails() {
-  const showId = window.location.search.split('=')[1];
+  const showId = window.location.search.split("=")[1];
 
   const show = await fetchAPIData(`tv/${showId}`);
 
   // Overlay for background image
-  displayBackgroundImage('tv', show.backdrop_path);
+  displayBackgroundImage("tv", show.backdrop_path);
 
-  const div = document.createElement('div');
+  const div = document.createElement("div");
 
   div.innerHTML = `
   <div class="details-top">
@@ -73,7 +78,7 @@ export async function displayShowDetails() {
     </p>
     <h5>Genres</h5>
     <ul class="list-group">
-      ${show.genres.map((genre) => `<li>${genre.name}</li>`).join('')}
+      ${show.genres.map((genre) => `<li>${genre.name}</li>`).join("")}
     </ul>
     <a href="${
       show.homepage
@@ -95,10 +100,10 @@ export async function displayShowDetails() {
   <div class="list-group">
     ${show.production_companies
       .map((company) => `<span>${company.name}</span>`)
-      .join(', ')}
+      .join(", ")}
   </div>
 </div>
   `;
 
-  document.querySelector('#show-details').appendChild(div);
+  document.querySelector("#show-details").appendChild(div);
 }
